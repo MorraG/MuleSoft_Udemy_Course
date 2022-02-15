@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="simulazionehttp_connector_req_respFlow" doc:id="51cb9426-ef39-4ea4-b198-4f314be613df" >
+		<http:listener doc:name="HTTP_GET" doc:id="978b3544-289e-4a65-902a-a08c52140eac" path="/exercise/{id}" allowedMethods="GET" config-ref="HTTP_Listener_config"/>
+		<logger level="INFO" doc:name="Logger" doc:id="c5f3bf84-808b-421c-91c6-77efe99cd557" message='#["log START - " ++ flow.name]'/>
+		<set-payload value='#[%dw 2.0&#10;&#10;output application/json&#10;---&#10;{&#10;	"uriParams": attributes.uriParams,&#10;	"queryParams": attributes.queryParams&#10;}]' doc:name="Set Payload" doc:id="a6c33c19-0663-4159-b5d6-c9d6764a5b79" />
+	</flow>
+</mule>
