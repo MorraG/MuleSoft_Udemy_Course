@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="peopleData" format="json">
+      <types:shape format="weave" example="peopleName.json"><![CDATA[%dw 2.0
+
+type peopleData = {| people: Array<{| person: {| name: String |} |}> |} {"example": "{\\\"people\\\":[{\\\"person\\\":{\\\"name\\\":\\\"\\\"}},{\\\"person\\\":{\\\"name\\\":\\\"\\\"}},{\\\"person\\\":{\\\"name\\\":\\\"\\\"}},{\\\"person\\\":{\\\"name\\\":\\\"\\\"}},{\\\"person\\\":{\\\"name\\\":\\\"\\\"}}]}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="fieldCourse" format="json">
+      <types:shape format="weave" example="examples/fieldsCourse.json"><![CDATA[%dw 2.0
+
+type fieldCourse = {|
+  field1: String, 
+  field2: String, 
+  field3: String
+|} {"example": "{\\\"field1\\\":\\\"mulesoft\\\",\\\"field2\\\":\\\"course\\\",\\\"field3\\\":\\\"fundamentals\\\"}"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#81f9d12d-b1b3-436e-9f45-f0ec3a39c1eb">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="peopleData"/>
+        </types:message>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="peopleData"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#35e0a044-275f-4a61-abed-dc77766388ec">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="fieldCourse"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
