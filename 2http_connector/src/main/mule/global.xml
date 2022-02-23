@@ -5,7 +5,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="8e6117e9-1f5a-4644-97e9-2f25d022e924" >
-		<http:listener-connection host="0.0.0.0" port="8081" />
+		<http:listener-connection host="localhost" port="8081" />
 	</http:listener-config>
 	<http:request-config name="HTTP_Request_configuration1" doc:name="HTTP Request configuration" doc:id="028b0423-a1e4-4024-bcda-3a3c59cc8e87" responseTimeout="9000000">
 		<http:request-connection host="localhost" port="8081" />

@@ -13,7 +13,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 		<logger level="INFO" doc:name="Log START" doc:id="a1a3bc99-3d62-4a7d-a22a-0f565340b799" message='#["log START - " ++ flow.name]'/>
 		<set-payload value='#["this is the basic flow payload"]' doc:name="Set Payload" doc:id="71a5cd3c-f265-4148-b277-d98b6255819b" />
 		<set-variable value="#[{&#10;	'param1':'value1',&#10;	'param2':'value2',&#10;	'param3':'value3',&#10;}]" doc:name="Set query params" doc:id="5baa5cf9-acee-46d0-9932-1638773fad16" variableName="customMap"/>
-		<http:request method="GET" doc:name="Request" doc:id="110e80c0-1aac-42b8-af2f-9b7f7b9f3ed3" config-ref="HTTP_Request_configuration1" path="/queryParams" target="requestResponse">
+		<http:request method="OPTIONS" doc:name="Request" doc:id="110e80c0-1aac-42b8-af2f-9b7f7b9f3ed3" config-ref="HTTP_Request_configuration1" path="/queryParams" target="requestResponse">
 			<http:query-params ><![CDATA[#[output application/java
 ---
 
